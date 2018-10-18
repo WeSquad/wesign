@@ -1,0 +1,291 @@
+input {
+    width: 320px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: center;
+}
+
+select.form-control {
+    width: 130px;
+    margin-left: 5px;
+    display: inline-block;
+    height: 44px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: 20px;
+}
+
+.phone-input {
+    width: 150px;
+}
+
+form tr td:first-child {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.multiple-choice {
+    vertical-align: top;
+    padding-top: 10px;
+}
+
+form {
+    position: relative;
+    right: 30px;
+    left: 15px;
+}
+
+p {
+    margin: 0px;
+}
+
+#container1 {
+
+}
+
+#container1,
+#container2 {
+    width: 300px;
+    text-align: right;
+}
+
+#container2 {
+    margin-top: 2px;
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
+
+#container3 {
+    text-align: right !important;
+    float: right;
+}
+
+#container3 td {
+    padding: 1px;
+}
+
+#container4 {
+    margin-top: 3px;
+    border-top: 1px solid black;
+    width: 300px;
+}
+
+.full-name {
+    font-family: 'Helvetica';
+}
+
+.full-name,
+#company-name {
+    font-size: 17px;
+    font-weight: bold;
+    color: #34C5F3;
+    width: 300px;
+}
+
+#company-name {
+    padding-top: 2px;
+}
+
+#first-part {
+    text-align: right;
+    padding-bottom: 8px;
+}
+
+#logo {
+    text-align: left;
+    vertical-align: bottom;
+    padding-bottom: 10px;
+}
+
+#second-part {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#third-part {
+    text-align-last: justify;
+    -ms-text-align-last: justify;
+    -moz-text-align-last: justify;
+    padding-top: 5px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+#job-title {
+    font-weight: bold;
+}
+
+.signature-attribute {
+    font-family: 'Arial';
+    font-size: 14px;
+}
+
+#company-detail {
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+
+#company-locations {
+    font-size: 10px;
+    padding-top: 4px;
+}
+
+tr {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+}
+
+td {
+    max-width: 300px;
+}
+
+#links {
+    padding-top: 5px;
+    text-align: right;
+    width: 300px;
+}
+
+a:hover,
+a:focus,
+a:active,
+i.fa {
+    text-decoration: none;
+    color: #34C5F3;
+}
+
+small {
+    font-size: 0.6em;
+}
+
+.btnGenerate {
+    height: 26px;
+    width: 290px;
+    text-align: center;
+    margin: 0px -145px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+}
+
+.panel-footer {
+    min-height: 50px;
+}
+
+form table td {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.panel {
+    margin: 10px;
+}
+
+.panel-heading {
+    text-align: center;
+}
+
+.panel-heading.wemanity-heading {
+    background: rgb(186, 218, 255);
+    color: black;
+}
+
+.signature-container {
+    padding: 0px;
+}
+
+.spaced-div{
+    margin-top: 20px;
+}
+
+textarea{
+    background: #efefef;
+}
+
+.currentLocation {
+    font-weight: bold;
+    color: #34C5F3;
+    font-size: 1.1em;
+}
+
+.barreVerticale {
+    border-left: 1px solid gray;
+}
+
+#btnsiGn {
+    background: #34C5F3;
+    color: white;
+    margin: 20px;
+    
+    
+}
+
+#btnBox {
+    text-align: center;    
+}
+
+.paysTitre {
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+#phrase {
+    height: 50px;
+    width: auto;
+}
+
+#happy {
+    height: 50px;
+    width: 60px;
+}
+
+#intro-part {
+    border-bottom: 1px solid black;
+
+}
+
+#introImg {
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid black;
+
+}
+
+#outroImg {
+    width: 100%;
+    border-bottom: 1px solid black;
+    display: inline-grid;
+    font-size: 10px;
+}
+
+#wemanityIcons {
+    width: 300px;
+    text-align: right;
+    padding-top: 5px;
+}
+
+#wecanopIcons {
+    width: 300px;
+    text-align: right;
+    padding-top: 5px;
+}
+
+#logoEng {
+    width: 300px;
+    height: 80px;
+    padding-top: 5px;
+}
+
+#titleLogo {
+    height: 10%;
+    width: 20%;
+    padding: 5px;
+}

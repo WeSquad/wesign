@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Wemanity Signature</title>
+	<!-- Latest compiled and minified CSS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+		crossorigin="anonymous">
+    <link rel="stylesheet" href="/wem/ressources/css/wesign.css">
+    
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<script src="https://use.fontawesome.com/78b0137cab.js"></script>
+	
+</head>
+
+<body>
+	<script>
+    $(document).ready(function(){
+			// renvoie le code international + la fin de chaîne pour un pays donné 
+			function getInternationalNumbers(country){
+				switch(country){
+					case "fr" : return { beginning : "+33 ", ending : " - FR" } ;
+					case "nl" : return { beginning : "+31 ", ending : " - NL" } ;
+					case "uk" : return { beginning : "+44 ", ending : " - UK" } ;
+					case "sp" : return { beginning : "+34 ", ending : " - SP" } ;
+					case "be" : return { beginning : "+32 ", ending : " - BE" } ;			
+				}
+			}
+
+        $("button").click(function(){
+            // job 
+            $("#job-title").text( $("input[name=\"job\"]").val() );
+            // nom prenom
+            $("#full-name").text( $("input[name=\"name\"]").val() );
+            // mail
+            $("#mail").text( $("input[name=\"email-wemanity\"]").val() );
+            $("#mail").attr("href", "mailto:" + $("input[name=\"email-wemanity\"]").val() );
+			// numero de telephone 
+			// trim la valeur puis remplace le 0 initial par l'identifiant international et ajoute - FR à la fin (ou autre, le cas échéant)
+			var phone1Value = $("input[name=\"mobilephone1\"]").val(); 
+			phone1Value = phone1Value.trim().substring(1); 
+			var phone1Plugins = getInternationalNumbers( $("#phone-loc-1").val() ); 
+			phone1Value = phone1Plugins.beginning + phone1Value + phone1Plugins.ending; 
+            $("#phone-1").text( phone1Value );
+
+            // numero de téléphone 2 (opt)
+            if( $("input[name=\"mobilephone2\"]").val().trim() != "" )
+            {
+                $("#phone-2").show();
+				var phone2Value = $("input[name=\"mobilephone2\"]").val(); 
+				phone2Value = phone2Value.trim().substring(1); 
+				var phone2Plugins = getInternationalNumbers( $("#phone-loc-2").val() ); 
+				phone2Value = phone2Plugins.beginning + phone2Value + phone2Plugins.ending; 
+				$("#phone-2").text( phone2Value );
+            }
+            else{
+                $("#phone-2").hide();
+            }
+
+			// si les checkboxes sont checkées on ajoute la classe de mise en valeur des localisations 
+			$("#fr").is(":checked") ? $("#france-footer").addClass("currentLocation") : $("#france-footer").removeClass("currentLocation") ; 
+			$("#nl").is(":checked") ? $("#paysbas-footer").addClass("currentLocation") : $("#paysbas-footer").removeClass("currentLocation") ; 
+			$("#uk").is(":checked") ? $("#royaumeuni-footer").addClass("currentLocation") : $("#royaumeuni-footer").removeClass("currentLocation") ; 
+			$("#sp").is(":checked") ? $("#espagne-footer").addClass("currentLocation") : $("#espagne-footer").removeClass("currentLocation") ; 
+			$("#be").is(":checked") ? $("#belgique-footer").addClass("currentLocation") : $("#belgique-footer").removeClass("currentLocation") ; 
+
+			// logo 
+			$("#logo").children().first().attr("src", $("input[type=\"radio\"]:checked").val());
+
+            // url linkedin
+            $("#linkedin").attr( "href", $("input[name=\"linkedin\"]").val() );
+            // url facebook
+            $("#facebook").attr( "href", $("input[name=\"facebook\"]").val() );
+            // url twitter
+            $("#twitter").attr( "href", $("input[name=\"twitter\"]").val() );
+            // nom de la societe
+            $("#company-name").html( "wemanity" );
+            // details sur la societe
+            $("#company-detail").text( "Agile & Digital Transformation" );
+            
+            if ($("#linkedinInput").val() == "") {
+                $("#linkedin").addClass("hide");
+            } else {
+                $("#linkedin").removeClass("hide");
+            }
+            
+            if ($("#facebookInput").val() == "") {
+                $("#facebook").addClass("hide");
+            } else {
+                $("#facebook").removeClass("hide");
+            }
+            
+            if ($("#tweeterInput").val() == "") {
+                $("#twitter").addClass("hide");
+            } else {
+                $("#twitter").removeClass("hide");
+            }
+            
+         
+            
+            if ($(".wecanopyLogo").is(":checked")) {
+                
+                $(".wemRemovable").addClass("hide");
+                $("#container3").addClass("barreVerticale");
+                $("#full-name").css("color","#00534C");
+//                $("#full-name").css("font-size","17px");
+//                $("#full-name").css("font-weight","normal");
+                $("#mail").css("color","#00534C");
+                $(".currentLocation").css("color","#5ABC6E");
+                $(".italicDiv").css("font-style","italic");
+                $(".logoTaille").css("width","85px");
+                $("#container1").css("margin-bottom","-6px");
+                
+                
+            } else {
+                
+                $(".wemRemovable").removeClass("hide");
+                $("#container3").removeClass("barreVerticale");
+                $("#full-name").css("color","#34C5F3");
+//                $("#full-name").css("font-size","17px");
+//                $("#full-name").css("font-weight","bold");
+                $("#mail").css("color","#34C5F3");
+                $(".currentLocation").css("color","#34C5F3");
+                $(".logoTaille").css("width","85px");
+                $("#container1").css("margin-bottom","0px");
+
+            }
+               
+            
+            
+    });
+        
+        $("button").click( function () {
+                
+                if ($(".wecanopyLogo").is(":checked") && $("#emailL").val().length <= 20  ) {
+                    
+                    $(".logoTaille").css("width","120px");
+
+                } else if ($(".wecanopyLogo").is(":checked") && $("#emailL").val().length >= 20  ) {
+                    
+                    $(".logoTaille").css("width","75px");
+                    
+                }  
+            });
+});
+
+</script>
+    
+    
+    
+    
+		<div class="row">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-8">
+				<div class="panel panel-default">
+					<div class="panel-heading wemanity-heading">
+						<span>
+                        Générateur de signature Wemanity / Wemanity signature generator
+                        </span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-2"></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Formulaire de création / Creation form
+					</div>
+					<div class="panel-body">
+						<form name="myForm">
+							<table>
+								<tr>
+									<td>Name</td>
+									<td>
+										<input id="nameL" type="text" name="name" required placeholder="Prénom NOM / Surname LAST NAME">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Job Title</td>
+									<td>
+										<input type="text" name="job" placeholder="Poste / Job title" required></td>
+								</tr>
+								<tr>
+									<td>Email</td>
+									<td>
+										<input id="emailL" type="email" name="email-wemanity" placeholder="xxxx@wemanity.com" required>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Mobile phone 1</td>
+									<td>
+										<input type="tel" class="phone-input" name="mobilephone1" placeholder="06 85 75 61 11" required>
+										<select id="phone-loc-1" class="form-control">
+											<option value="fr" selected>France</option>
+											<option value="be">Belgique / Belgium</option>
+											<option value="nl">Pays-Bas / Netherlands</option>
+											<option value="uk">Royaume-Uni / United Kingdom</option>
+											<option value="sp">Espagne / Spain</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>Mobile phone 2</td>
+									<td>
+										<input type="tel" class="phone-input" name="mobilephone2" placeholder="(optional)" />
+										<select id="phone-loc-2" class="form-control">
+											<option value="fr" selected>France</option>
+											<option value="be">Belgique / Belgium</option>
+											<option value="nl">Pays-Bas / Netherlands</option>
+											<option value="uk">Royaume-Uni / United Kingdom</option>
+											<option value="sp">Espagne / Spain</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td class="multiple-choice">
+										Géographie / Location
+										<br/> (multiple OK)
+									</td>
+									<td>
+										<div class="checkbox">
+											<label><input type="checkbox" id="fr" value="">France</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" id="be" value="">Belgique / Belgium</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" id="nl" value="">Pays-Bas / Netherlands</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" id="uk" value="">Royaume-Uni / United Kingdom</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" id="sp" value="">Suisse / Switzerland</label>
+										</div>
+									</td>
+								</tr>
+
+								<!-- sélection de logo -->
+								<tr>
+									<td class="multiple-choice">
+										Logo
+									</td>
+									<td>										
+										<label><input  checked="checked" type="radio" name="logo-selected" value="http://www.wemanity.com/sig/Wgreen.png" /><img width="100" src="http://www.wemanity.com/sig/Wgreen.png" alt="Wemanity green logo"></label>
+										<label><input type="radio" name="logo-selected" value="http://www.wemanity.com/sig/Wyellow.png" /><img width="100" src="http://www.wemanity.com/sig/Wyellow.png" alt="Wemanity yellow logo"></label>										
+										<label><input type="radio" name="logo-selected" value="http://www.wemanity.com/sig/Wpink.png" /><img width="100" src="http://www.wemanity.com/sig/Wpink.png" alt="Wemanity pink logo"></label>										
+										<label><input type="radio" name="logo-selected" value="http://www.wemanity.com/sig/Wrainbow.png" /><img width="100" src="http://www.wemanity.com/sig/Wrainbow.png" alt="Wemanity rainbow logo"></label>
+										<label><input type="radio" name="logo-selected" value="http://www.wemanity.com/sig/Woriginal.png" /><img width="100" src="http://www.wemanity.com/sig/Woriginal.png" alt="Wemanity original logo"></label>																					
+										<label><input type="radio" name="logo-selected" value="http://www.wemanity.com/sig/W-gradientcolors.png" /><img width="100" src="http://www.wemanity.com/sig/W-gradientcolors.png" alt="Wemanity gradient colors logo"></label>
+										<label><input type="radio" name="logo-selected" value="http://wemanity.com/sig/Wemanity%20logo.png" /><img width="90" src="http://wemanity.com/sig/Wemanity%20logo.png" alt="Wemanity original logo"></label>
+                                        
+                                        
+                                        <label><input class="wecanopyLogo" type="radio" name="logo-selected" value="canopy-logo/canopy-logo-good.png" /><img width="110" src="canopy-logo/canopy-logo-good.png" alt="Wemanity original logo"></label>
+									</td>
+								</tr>
+								<tr>
+									<td>Linkedin</td>
+									<td>
+										<input class="inputReseau" type="url" name="linkedin" id="linkedinInput" value="https://fr.linkedin.com/company/wemanity" required/>
+									</td>
+								</tr>
+								<tr>
+									<td>Facebook</td>
+									<td>
+										<input class="inputReseau" type="url" name="facebook" id="facebookInput" value="https://www.facebook.com/Wemanity" required/>
+									</td>
+								</tr>
+								<tr>
+									<td>Twitter</td>
+									<td>
+										<input class="inputReseau" type="url" name="twitter" id="tweeterInput" value="https://twitter.com/wemanityFR" required/>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+					<div class="panel-footer">
+						<button>Générer la signature / Generate signature </button>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Signature</div>
+					<div class="panel-body">
+						Copier et coller la signature générée ci-dessous dans le champ de signature de votre boîte mail <br> Copy and paste the generated
+						signature below into the signature field of your email client<br><br><br><br>
+
+						<div class="row">
+							<div class="col-lg-3"></div>
+							<div class="col-lg-6 signature-container">
+								<table id="container1">
+									<tr>
+										<td></td>
+                                        <!--Prénom NOM -->
+										<td id="full-name" class="signature-attribute"></td>
+									</tr>
+								</table>
+								<table id="container2">
+									<tr id="first-part">
+                                        <!-- LOGO -->
+										<td id="logo">
+											<img src="http://wemanity.com/sig/Wemanity%20logo.png" width="85" alt="Wemanity signature logo" class="logoTaille">
+										</td>
+										<td id="barreId">
+											<table id="container3">
+												<tr>
+                                                    <!--Poste -->
+													<td id="job-title" class="signature-attribute italicDiv"></td>
+												</tr>
+												<tr>
+                                                    <!--Numéro de telephone -->
+													<td id="phone-1" class="signature-attribute"></td>
+												</tr>
+												<tr>
+                                                    <!--Numéro de téléphone 2 -->
+													<td id="phone-2" class="signature-attribute"></td>
+												</tr>
+												<tr>
+                                                    <!--Adresse mail -->
+													<td class="signature-attribute">
+														<a id="mail"></a>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+								<table id="container4">
+									<tr class="wemRemovable">
+                                        <!--Nom de la société -->
+										<td id="company-name" class="signature-attribute">wemanity</td>
+									</tr>
+									<tr class="wemRemovable">
+                                        <!--Détails sur la société -->
+										<td id="company-detail" class="signature-attribute">Agile &#38; Digital Transformation</td>
+									</tr>
+									<tr id="third-part">
+										<td id="company-locations" class="signature-attribute">
+											<span id="france-footer">France</span>
+											<span id="belgique-footer">Belgium</span>
+											<span id="paysbas-footer">Netherlands</span>
+											<!--United<span id="tiret-moche">-</span>Kingdoms-->
+											<span id="royaumeuni-footer">United&ensp;Kingdom</span>
+											<span id="espagne-footer">Switzerland</span>
+										</td>
+									</tr>
+									<tr>
+										<td id="links">
+                                            <!--linkedin -->
+											<a id="linkedin" target="_blank" href="https://fr.linkedin.com/company/wemanity"><img height="21" src="http://wemanity.com/sig/LinkedIn%20icon.png" alt="Linkedin Icon">
+											</a>
+                                            <!--facebook -->
+											<a id="facebook" href="https://www.facebook.com/Wemanity" target="_blank"><img height="21" src="http://wemanity.com/sig/Facebook%20icon.png" alt="Facebook Icon">
+											</a>
+                                            <!--twitter -->
+											<a id="twitter" href="https://twitter.com/wemanityFR" target="_blank"><img height="21" src="http://wemanity.com/sig/Twitter%20icon.png" alt="Twitter Icon">
+											</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div class="col-lg-3"></div>
+						</div>
+                        
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
